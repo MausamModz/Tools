@@ -3,6 +3,10 @@
 <div align="center">
   <h1 align="center">𝐃𝐞𝐱𝟐𝐂</h1>
 
+```
+pip3 install -r requirements.txt
+```
+
 
 <!-- TABLE OF CONTENTS -->
 <details>
