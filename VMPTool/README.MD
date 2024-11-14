@@ -9,7 +9,7 @@
 In the `convertRules.txt` define rules to obfuscate specific classes and methods within a project. Here’s how each rule works:
 
 
-## This rule obfuscates all classes in the com.example package and all methods within those classes.
+- This rule obfuscates all classes in the com.example package and all methods within those classes.
 
 ```
 class com.example.* { *; }
