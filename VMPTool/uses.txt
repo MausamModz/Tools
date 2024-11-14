@@ -1,0 +1,20 @@
+DexVM-Protect + Obfuscator
+
+Locate path
+run in termux bash x.sh
+In terminal sh x.sh
+
+Configure CMAKE + NDK in termux
+
+File Path: /path/to/vmptool/OuO/tool/convertRules.txt
+
+In the convertRules.txt file, we define rules to obfuscate specific classes and methods within a project. Here’s how each rule works:
+
+1. Rule: class com.example.* { *; }
+This rule obfuscates all classes in the com.example package and all methods within those classes.
+
+2. Rule: class com.example.application { *; }
+This rule targets the application class in the com.example package, obfuscating all methods within that specific class.
+
+3. Rule: class com.example.application { method1; method2; }
+This rule is more specific: it applies to the application class in the com.example package but limits obfuscation to method1 and method2 only.
