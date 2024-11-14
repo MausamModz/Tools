@@ -105,7 +105,6 @@ Open `project/jni/Android.mk` file in the cloned directory. You will find a vari
 - [x] Add new apksigner
 - [x] Add multi-dex support
 - [x] Add app abi handler
-- [x] Add signature configuration in `dcc.cfg`
 - [x] Add new options
     - [x] --skip-synthetic
     - [x] --custom-loader
