@@ -31,25 +31,24 @@ class com.example.application { method1; method2; }
 
 
   
-## To install the Android NDK offline in Termux**
-using the `android-ndk-aarch64.zip` file you’ve already downloaded, follow these steps:
+- To install the Android NDK offline in Termux using the `android-ndk-aarch64.zip` file you’ve already downloaded, follow these steps:
 
-## Steps to Install Android NDK Offline in Termux*
+- Steps to Install Android NDK Offline in Termux
 Move to the desired directory: First, move the downloaded `android-ndk-aarch64.zip` to the directory where you want to install the NDK (for example, in your home directory).
 
-## 2. If the file is in your Downloads folder, you can move it to your home directory or any other location you prefer:
+- If the file is in your Downloads folder, you can move it to your home directory or any other location you prefer:
 
 ```
 mv ~/storage/downloads/android-ndk-aarch64.zip ~/
 ```
 
-## 3. Install unzip**: Ensure that unzip is installed on your Termux if you don't have it already.
+- Install unzip**: Ensure that unzip is installed on your Termux if you don't have it already.
 
 ```
 pkg install unzip
 ```
 
-## 4. Extract the NDK**: Navigate to the directory where you moved the zip file and unzip it.
+- Extract the NDK: Navigate to the directory where you moved the zip file and unzip it.
 
 ```
 cd ~unzip android-ndk-aarch64.zip
@@ -57,7 +56,7 @@ cd ~unzip android-ndk-aarch64.zip
 
 - This will extract the contents of the zip file into a directory named android-ndk (or similar).
 
-- Add NDK to your PATH**: To use the NDK from any directory, add the extracted NDK directory to your PATH environment variable.
+- Add NDK to your PATH: To use the NDK from any directory, add the extracted NDK directory to your PATH environment variable.
 
 - Open your `.bashrc or .zshrc`(depending on the shell you're using) to edit the file.
 
@@ -95,7 +94,7 @@ source ~/.zshrc
 ``` 
 
 
-- Verify the installation**: To check if the NDK was installed correctly, run:
+- Verify the installation: To check if the NDK was installed correctly, run:
 
 
 ```
