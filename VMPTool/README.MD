@@ -1,4 +1,3 @@
-
 <a name="readme-top"></a>
 
 <div align="center">
@@ -7,10 +6,10 @@
 # Usage
 
 ### Filters
-In the `convertRules.txt` file, we define rules to obfuscate specific classes and methods within a project. Here’s how each rule works:
+In the `convertRules.txt` file define rules to obfuscate specific classes and methods within a project. Here’s how each rule works:
 
 
--This rule obfuscates all classes in the com.example package and all methods within those classes.
+## This rule obfuscates all classes in the com.example package and all methods within those classes.
 
 ```
 class com.example.* { *; }
@@ -35,39 +34,39 @@ class com.example.application { method1; method2; }
 #### To install the Android NDK offline in Termux**
 using the `android-ndk-aarch64.zip` file you’ve already downloaded, follow these steps:
 
-# Steps to Install Android NDK Offline in Termux*
+### Steps to Install Android NDK Offline in Termux*
 Move to the desired directory: First, move the downloaded `android-ndk-aarch64.zip` to the directory where you want to install the NDK (for example, in your home directory).
 
-# 2. If the file is in your Downloads folder, you can move it to your home directory or any other location you prefer:
+### 2. If the file is in your Downloads folder, you can move it to your home directory or any other location you prefer:
 
 ```
 mv ~/storage/downloads/android-ndk-aarch64.zip ~/
 ```
 
-# 3. Install unzip**: Ensure that unzip is installed on your Termux if you don't have it already.
+### 3. Install unzip**: Ensure that unzip is installed on your Termux if you don't have it already.
 
 ```
 pkg install unzip
 ```
 
-# 4. Extract the NDK**: Navigate to the directory where you moved the zip file and unzip it.
+### 4. Extract the NDK**: Navigate to the directory where you moved the zip file and unzip it.
 
 ```
 cd ~unzip android-ndk-aarch64.zip
 ```
 This will extract the contents of the zip file into a directory named android-ndk (or similar).
 
-# 5. **Add NDK to your PATH**: To use the NDK from any directory, add the extracted NDK directory to your PATH environment variable.
+### 5. **Add NDK to your PATH**: To use the NDK from any directory, add the extracted NDK directory to your PATH environment variable.
 
-# 6. Open your `.bashrc or .zshrc`(depending on the shell you're using) to edit the file.
+### 6. Open your `.bashrc or .zshrc`(depending on the shell you're using) to edit the file.
 
 ```
 nano ~/.bashrc
-```  # for bash users
+``` for bash users
 or
 ```
 nano ~/.zshrc
-```  # for zsh users
+```  for zsh users
 Add the following line to include the NDK directory in your PATH `(replace ~/android-ndk with the correct path if different)`:
 
 ```
@@ -79,17 +78,17 @@ export PATH=$PATH:/data/data/com.termux/files/home/android-sdk/build-tools/34.0.
 ```
 -Save and close the file. If you're using nano, press CTRL + X, then Y, and then Enter.
 
-# 7. **Source the file**: To apply the changes to your current session, source the `.bashrc or .zshrc file`:
+### 7. **Source the file**: To apply the changes to your current session, source the `.bashrc or .zshrc file`:
 
 ```
 source ~/.bashrc
-```  # for bash users
+``` for bash users
 or
 ```
 source ~/.zshrc
-```  # for zsh users
+``` for zsh users
 
-# 8. **Verify the installation**: To check if the NDK was installed correctly, run:
+### 8. **Verify the installation**: To check if the NDK was installed correctly, run:
 
 ```
 ndk-build --version
