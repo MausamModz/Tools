@@ -62,35 +62,43 @@ This will extract the contents of the zip file into a directory named android-nd
 
 ```
 nano ~/.bashrc
-``` for bash users
+```
+
 or
+
 ```
 nano ~/.zshrc
-```  for zsh users
+```  
+
 Add the following line to include the NDK directory in your PATH `(replace ~/android-ndk with the correct path if different)`:
+
 
 ```
 export PATH=$PATH:/data/data/com.termux/files/home/android-sdk/ndk/27.1.12297006
-```
-
-```
 export PATH=$PATH:/data/data/com.termux/files/home/android-sdk/build-tools/34.0.4
 ```
+
+
 -Save and close the file. If you're using nano, press CTRL + X, then Y, and then Enter.
 
-### 7. **Source the file**: To apply the changes to your current session, source the `.bashrc or .zshrc file`:
+### 7.Source the file: To apply the changes to your current session, source the `.bashrc or .zshrc file`:
 
 ```
 source ~/.bashrc
-``` for bash users
+``` 
+
 or
+
 ```
 source ~/.zshrc
-``` for zsh users
+``` 
 
-### 8. **Verify the installation**: To check if the NDK was installed correctly, run:
+
+### 8.Verify the installation**: To check if the NDK was installed correctly, run:
+
 
 ```
 ndk-build --version
 ```
+
 If everything is set up correctly, you should see the version of the Android NDK printed out.
