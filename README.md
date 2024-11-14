@@ -1,6 +1,7 @@
-To install the Android NDK offline in Termux using the android-ndk-aarch64.zip file you’ve already downloaded, follow these steps:
+**To install the Android NDK offline in Termux**
+using the `android-ndk-aarch64.zip` file you’ve already downloaded, follow these steps:
 
-Steps to Install Android NDK Offline in Termux
+*Steps to Install Android NDK Offline in Termux*
 Move to the desired directory: First, move the downloaded android-ndk-aarch64.zip to the directory where you want to install the NDK (for example, in your home directory).
 
 If the file is in your Downloads folder, you can move it to your home directory or any other location you prefer:
