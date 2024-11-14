@@ -26,7 +26,7 @@ or
 ```nano ~/.zshrc```  # for zsh users
 Add the following line to include the NDK directory in your PATH `(replace ~/android-ndk with the correct path if different)`:
 
-```export PATH=$PATH:~/android-ndk```
+```export PATH=$PATH:/data/data/com.termux/files/home/android-sdk/ndk/27.1.12297006```
 ```export PATH=$PATH:/path/to/android/sdk/build-tools/34.0.4```
 Save and close the file. If you're using nano, press CTRL + X, then Y, and then Enter.
 
