@@ -1,1 +1,0 @@
-class com.willme.topactivity.MainActivity { *; }
