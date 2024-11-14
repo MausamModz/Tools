@@ -6,7 +6,7 @@
 # Usage
 
 ### Filters
-In the `convertRules.txt` file define rules to obfuscate specific classes and methods within a project. Here’s how each rule works:
+In the `convertRules.txt` define rules to obfuscate specific classes and methods within a project. Here’s how each rule works:
 
 
 ## This rule obfuscates all classes in the com.example package and all methods within those classes.
