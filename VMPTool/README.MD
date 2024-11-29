@@ -2,7 +2,15 @@
 
 <div align="center">
   <h1 align="center">DEXVMPTool</h1>
-  
+
+# Need to do
+
+
+```
+apt update && apt upgrade -y && pkg update && pkg upgrade -y && pkg install openjdk-17
+```
+
+
 # Usage
 
 ### Filters
@@ -102,7 +110,7 @@ source ~/.zshrc
 ndk-build --version
 ```
 
-If everything is set up correctly, you should see the version of the Android NDK printed out. If not give executable permission
+If everything is set up correctly, you should see the version of the Android NDK printed out. If not give executable permission `PATH/TO/YOURFILES/`
 
 
 ```
