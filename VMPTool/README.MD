@@ -102,4 +102,11 @@ source ~/.zshrc
 ndk-build --version
 ```
 
-If everything is set up correctly, you should see the version of the Android NDK printed out.
+If everything is set up correctly, you should see the version of the Android NDK printed out. If not give executable permission
+
+
+```
+chmod +x /data/data/com.termux/files/home/android-sdk/cmake/3.25.1/bin/cmake
+chmod -R 755 /data/data/com.termux/files/home/android-sdk/cmake/3.25.1/bin
+chmod +x /data/data/com.termux/files/home/android-sdk/ndk/27.1.12297006/build/cmake/android.toolchain.cmake
+```
