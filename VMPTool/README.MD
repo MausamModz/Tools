@@ -7,7 +7,7 @@
 
 
 ```
-apt update && apt upgrade -y && pkg update && pkg upgrade -y && pkg install openjdk-17
+apt update && apt upgrade -y && pkg update && pkg upgrade -y && pkg install openjdk-17 -y && pkg install bc -y
 ```
 
 
