@@ -1,6 +1,5 @@
-<p align="center">
-  </p>
-<h1 align="center">
+<p align="center">  
+<h1
   Dex2C
 </h1>
 
