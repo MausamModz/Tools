@@ -1,8 +1,10 @@
 <div align="center">
+  <p
   <h1 align="center">Dex2C</h1>  
-  <p align="center">
+
   ![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=Method-based AOT compiler that can wrap Dalvik bytecode with JNI native code!&font_color=rgb(0,128,255))
   </p>
+  
 </div>
 
 ### Requierements
