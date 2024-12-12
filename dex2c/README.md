@@ -76,7 +76,7 @@ Adding an exclamation `!` sign before a rule will mark that rule as a blacklist.
 - Copy your apk file to `dex2c` folder where `dcc.py` is located and run this command.
 
 ```bash
-python3 dcc.py -a input.apk
+python3 dcc.py -i input.apk
 
 ```
 
