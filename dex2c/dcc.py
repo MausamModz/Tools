@@ -686,7 +686,7 @@ class DCC:
                     filedata = file.read()
                 filedata = re.sub(pattern, replacement, filedata)
                 filedata = filedata.replace(
-                    "Lnp/loader/Protect;",
+                    "Lnc.loader/Protect;",
                     "L" + self.custom_loader.replace(".", "/") + ";",
                 )
                 with open(temp_loader, "w") as file:
@@ -930,8 +930,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "-c",
         "--custom-loader",
-        default="np.loader.Protect",
-        help="Loader class, default: np.loader.Protect",
+        default="nc.loader.Protect",
+        help="Loader class, default: nc.loader.Protect",
     )
     parser.add_argument(
         "-s",
