@@ -680,7 +680,7 @@ class DCC:
                         return
                 pattern = r'const-string v0, "[\w\W]+"'
                 replacement = 'const-string v0, "' + self.lib_name + '"'
-                loader_file_path = "loader/DccApplication.smali"
+                loader_file_path = "loader/Protect.smali"
                 temp_loader = make_temp_file("-Loader.smali")
                 with open(loader_file_path, "r") as file:
                     filedata = file.read()
