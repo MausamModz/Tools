@@ -1,4 +1,4 @@
-.class public Lnp/loader/Protect;
+.class public Lnc/loader/Protect;
 .super Landroid/app/Application;
 
 
