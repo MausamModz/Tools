@@ -2,8 +2,11 @@
   <h1 align="center">Dex2C</h1>
 </div>
 
+
+<p
+
   ![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=Method-based AOT compiler that can wrap Dalvik bytecode with JNI native code!
-  
+  </p>
 
 ### Requierements
 1. Python3
