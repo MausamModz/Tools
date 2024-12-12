@@ -16,7 +16,7 @@
 
 ### Installation
    ```bash
-   git clone https://github.com/MausamModz/Tools/dex2c
+   git clone https://github.com/MausamModz/Tools/tree/main/dex2c
    ```
 - configure dcc.cfg with your NDK path
 
@@ -79,7 +79,7 @@ Adding an exclamation `!` sign before a rule will mark that rule as a blacklist.
 - Copy your apk file to `dex2c` folder where `dcc.py` is located and run this command.
 
 ```bash
-python3 dcc.py -a input.apk -o output.apk
+python3 dcc.py -a input.apk --custom-loader -o output.apk
 ```
 
 - Run this command to know about all the other options available in dcc to find the best ones for your needs.
