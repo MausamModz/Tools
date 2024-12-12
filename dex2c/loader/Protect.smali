@@ -6,11 +6,34 @@
 .method static final constructor <clinit>()V
     .registers 1
 
-    const-string v0, "stub"
+    const v0, 0xA  # Number of arrays (10 characters)
+
+    new-array v0, v0, [C
+
+    .line 1
+    fill-array-data v0, :array_10
+
+    invoke-static {v0}, Ljava/lang/String;->valueOf([C)Ljava/lang/String;
+
+    move-result-object v0
 
     invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V
 
     return-void
+
+    :array_10
+    .array-data 2
+      0x70
+      0x61
+      0x69
+      0x72
+      0x69
+      0x70
+      0x63
+      0x6F
+      0x72
+      0x65
+    .end array-data
 .end method
 
 .method public constructor <init>()V
