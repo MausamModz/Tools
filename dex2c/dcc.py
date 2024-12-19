@@ -401,6 +401,9 @@ class DCC:
         Logger.info(" Converting...")
         compiled_method_code, native_method_prototype, errors = None, None, None
         dex_analysis = analysis.Analysis()
+        native_method_prototype = {}
+        compiled_method_code = {}
+        errors = []
         for dex in self.dex_files:
             dex_analysis.add(dex)
         for dex in self.dex_files:
@@ -411,9 +414,6 @@ class DCC:
                 self.allow_init_methods,
             )
             compiler = Dex2C(dex, dex_analysis, self.obfus, self.dynamic_register)
-            native_method_prototype = {}
-            compiled_method_code = {}
-            errors = []
             for m in dex.get_methods():
                 method_triple = get_method_triple(m)
                 jni_longname = JniLongName(*method_triple)
@@ -825,7 +825,7 @@ def make_temp_file(suffix=""):
 def clean_tmp_directory():
     tmpdir = ".tmp"
     try:
-        Logger.info("Removing .tmp folder")
+        Logger.info(" Removing .tmp folder")
         rmtree(tmpdir)
     except OSError:
         run(["rd", "/s", "/q", tmpdir], shell=True)
@@ -834,8 +834,9 @@ def clean_tmp_directory():
 # Removed sign() function as it's no longer needed
 
 def move_unsigned(unsigned_apk, signed_apk):
-    Logger.info("Moving unsigned apk -> " + signed_apk)
+    Logger.info(" Moving unsigned apk -> " + signed_apk)
     copy(unsigned_apk, signed_apk)
+
 
 def is_apk(name_):
     try:
@@ -987,7 +988,7 @@ if __name__ == "__main__":
             args[key] = dcc_cfg[key]
         if args[key] is not None:
             Logger.info(f"     {key} = {args[key]}")
-    # Must be invoked first before invoking any other method
+    # Must be invoked first before invoking any other mehtod
     create_tmp_directory()
     # Backing up jni folder because modifications will be made in runtime
     backup_jni_folder_path = backup_jni_project_folder()
@@ -999,3 +1000,4 @@ if __name__ == "__main__":
     finally:
         restore_jni_project_folder(backup_jni_folder_path)
         clean_tmp_directory()
+        
