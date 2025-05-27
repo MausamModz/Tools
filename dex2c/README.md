@@ -13,7 +13,7 @@
 
 ### Installation
    ```bash
-   git clone https://github.com/MausamModz/Tools/tree/main/dex2c
+   git clone https://github.com/MausamModz/Tools.git
    ```
 - configure dcc.cfg with your NDK path
 
