@@ -1,6 +1,6 @@
 <h1>Dex2C</h1>
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Poppins&size=15&duration=6000&pause=500&color=D8F748&width=435&lines=Method-based+AOT+compiler+that+can+wrap+Dalvik+bytecode+with+JNI+native+code.)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Poppins&size=15&duration=6000&pause=500&color=D8F748&width=700&lines=Method-based+AOT+compiler+that+can+wrap+Dalvik+bytecode+with+JNI+native+code.)](https://git.io/typing-svg)
 
 ### Requierements
 1. Python3
