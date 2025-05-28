@@ -266,7 +266,7 @@ def patch_files():
     log.subheader("Copying native libraries...")
     so_files_to_copy = [
         'libmod.so',
-        'libCrashApp.so'
+        'libFirebaseCppApp.so'
     ]
 
     missing = [f for f in so_files_to_copy if not os.path.exists(os.path.join(cwd, f))]
@@ -341,10 +341,10 @@ def process_apk(apks_file):
     log.header("Step 1/9: Extracting base.apk")
     extract_file(apks_file, "base.apk")
     
-    # Step 2: Create libCrashApp.so
-    log.header("Step 2/9: Creating libCrashApp.so")
-    shutil.copy("base.apk", "libCrashApp.so")
-    log.success("Created libCrashApp.so from base.apk")
+    # Step 2: Create libFirebaseCppApp.so
+    log.header("Step 2/9: Creating libFirebaseCppApp.so")
+    shutil.copy("base.apk", "libFirebaseCppApp.so")
+    log.success("Created libFirebaseCppApp.so from base.apk")
     
     # Step 3: Remove old merged_app.apk if exists
     log.header("Step 3/9: Cleaning previous files")
