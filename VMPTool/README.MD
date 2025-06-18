@@ -85,7 +85,7 @@ nano ~/.zshrc
 ```
 export PATH=$PATH:/data/data/com.termux/files/home/android-sdk/ndk/27.1.12297006
 export PATH=$PATH:/data/data/com.termux/files/home/android-sdk/build-tools/34.0.4
-export PATH=$PATH:/data/data/com.termux/files/home/android-sdk/cmdline-tools/bin
+export PATH=$PATH:/data/data/com.termux/files/home/android-sdk/cmdline-tools/latest/bin
 ```
 
 
