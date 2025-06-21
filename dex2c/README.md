@@ -31,6 +31,11 @@ Add all your filters in `filter.txt` file - one rule for each line. Filters are 
 com/some/class;some_method(some_parameters)return_type
 ```
 
+- Protect OnCreate method (copy signature method)
+```
+com/example/test/MainActivity;onCreate\(Landroid/os/Bundle;\)V
+```
+
 - Protect all methods in a specific class.
 ```
 com/some/class;.*
