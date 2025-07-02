@@ -2,11 +2,22 @@
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Poppins&size=15&duration=6000&pause=500&color=D8F748&width=700&lines=Method-based+AOT+compiler+that+can+wrap+Dalvik+bytecode+with+JNI+native+code.)](https://git.io/typing-svg)
 
+Forked from Kirlif/[d2c](https://github.com/Kirlif/d2c)
+
 ### Requierements
 1. Python3
 2. lxml python package.
    ```bash
    pkg install python-lxml
+   ```
+   or
+   ```bash
+   pip3 install -U --user 'lxml>=4.3.0'
+   ```
+   on Termux:
+      ```bash
+   pkg install libxml2 libxslt
+   CFLAGS="-O0" pip install -U lxml
    ```
 3. JRE/JDK
 3. Android NDK
@@ -103,3 +114,22 @@ python3 dcc.py --help
 - --input only is required 
 - all options can be configured in dcc.cfg ; options passed to the command line have priority
 - adjust APP_PLATFORM automatically
+
+### Settings
+
+|  Cli  |  Config  |  Default  |
+| ----- | -------- |  -------- |
+|-i, --input|||
+| -o, --output|output|output.(apk\|zip)|
+|-p, --obfuscate|obfuscate|false|
+|-d, --dynamic-register|dynamic_register|false|
+|-s, --skip-synthetic|skip_synthetic|false|
+|-a, --allow-init|allow_init|false|
+|-k, --force-keep-libs|force_keep_libs|false|
+|-b, --no-build|no_build|false|
+|-f, --filter|filter|filter.txt|
+|-c, --custom-loader|custom_loader|amimo.dcc.DccApplication|
+|-r, --force-custom-loader|force_custom_loader|false
+|-l, --lib-name|lib_name|stub|
+|-e, --source-dir|source_dir||
+|-z, --project-archive|project_archive|project-source.zip|
