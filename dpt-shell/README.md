@@ -4,7 +4,7 @@
 
 Forked from luoyesiqiu/[dpt-shell](https://github.com/luoyesiqiu/dpt-shell)
 
-dpt-shell is an android Dex protect shell that makes Dex's functions code empty and fix on run.
+dpt-shell is an Android Dex protection shell that hollows out Dex method implementations and reconstructs them at runtime.
 
 ## Usage
 
@@ -44,8 +44,14 @@ usage: java -jar dpt.jar [option] -f <package_file>
                            - x86_64
  -f,--package-file <arg>   Need to protect android package(*.apk, *.aab)
                            file.
+ -K,--keep-classes         Keeping some classes in the package can improve
+                           the app's startup speed to a certain extent,
+                           but it is not supported by some application
+                           packages.
  -l,--noisy-log            Open noisy log.
  -o,--output <arg>         Output directory for protected package.
+ -r,--rules-file <arg>     Rules file for class names that will not be
+                           protected.
  -v,--version              Show program's version number.
  -x,--no-sign              Do not sign package.
 ```
@@ -68,3 +74,4 @@ This project has not too many tests, be careful use in prod environment. Otherwi
 - [zip4j](https://github.com/srikanth-lingala/zip4j)
 - [commons-cli](https://github.com/apache/commons-cli)
 - [dexmaker](https://android.googlesource.com/platform/external/dexmaker)
+- [Obfuscate](https://github.com/adamyaxley/Obfuscate)
