@@ -250,6 +250,7 @@ class DCC:
         self.do_compile = not args_["no_build"]
         self.filter_cfg = args_["filter"]
         self.custom_loader = args_["custom_loader"]
+        self.force_custom_loader = args_["force_custom_loader"]
         self.lib_name = args_["lib_name"]
         self.project_dir = args_["source_dir"]
         self.source_archive = args_["project_archive"]
@@ -505,6 +506,7 @@ class DCC:
                 dex = f.read()
             dex_files = [dvm.DalvikVMFormat(dex)]
             Logger.info(" using abis defined in Application.mk file")
+        Logger.info(f" Setting APP_PLATFORM to {self.min_sdk}")
         pattern_platform = re.compile(r"APP_PLATFORM *:=.*\n")
         replacement_platform = f"APP_PLATFORM := {self.min_sdk}\n"
         with open("project/jni/Application.mk", "r+") as f:
@@ -619,7 +621,6 @@ class DCC:
             return
         if self.is_dex:
             self.min_sdk = get_min_sdk_from_dex(self.api)
-        Logger.info(f" Setting APP_PLATFORM to {self.min_sdk}")
         self.dex_files = self.get_dex_files_and_adjust_mk_files()
         self.compiled_methods, self.method_prototypes, errors = self.compile_dex()
         if errors:
@@ -668,7 +669,8 @@ class DCC:
             app_class_file_path = self.get_application_class_file(
                 classes_folders, application_class_name
             )
-            if application_class_name == "" or app_class_file_path == "":
+            has_app_class = application_class_name and app_class_file_path
+            if not has_app_class or self.force_custom_loader:
                 for classes_folder in classes_folders:
                     loader = path.join(
                         classes_folder, self.custom_loader.replace(".", sep) + ".smali"
@@ -691,21 +693,22 @@ class DCC:
                 )
                 with open(temp_loader, "w") as file:
                     file.write(filedata)
-                Logger.info(
-                    "\n Application class not found in the AndroidManifest.xml or doesn't exist in dex, adding \033[32m"
-                    + self.custom_loader
-                    + "\033[0m\n"
-                )
-                check_call(
-                    [
-                        "java",
-                        "-jar",
-                        MANIFEST_EDITOR,
-                        path.join(self.decompiled_dir, "AndroidManifest.xml.bin"),
-                        self.custom_loader,
-                    ],
-                    stderr=STDOUT,
-                )
+                if not has_app_class:
+                    Logger.info(
+                        "\n Application class not found in the AndroidManifest.xml or doesn't exist in dex, adding \033[32m"
+                        + self.custom_loader
+                        + "\033[0m\n"
+                    )
+                    check_call(
+                        [
+                            "java",
+                            "-jar",
+                            MANIFEST_EDITOR,
+                            path.join(self.decompiled_dir, "AndroidManifest.xml.bin"),
+                            self.custom_loader,
+                        ],
+                        stderr=STDOUT,
+                    )
                 loader_dir = path.join(
                     classes_folders[-1],
                     self.custom_loader[: self.custom_loader.rfind(".")].replace(
@@ -721,26 +724,19 @@ class DCC:
                         self.custom_loader.replace(".", sep) + ".smali",
                     ),
                 )
-            else:
+            if has_app_class:
                 Logger.info(
                     "\n Application class from AndroidManifest.xml, \033[32m"
                     + application_class_name
                     + "\033[0m\n"
                 )
-                check_call(
-                    [
-                        "java",
-                        "-jar",
-                        MANIFEST_EDITOR,
-                        path.join(self.decompiled_dir, "AndroidManifest.xml.bin"),
-                        application_class_name,
-                    ],
-                    stderr=STDOUT,
-                )
-                line_to_insert = (
-                    f'    const-string v0, "{self.lib_name}"\n'
-                    + "    invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V"
-                )
+                if self.force_custom_loader:
+                    line_to_insert = f"    new-instance v0, L{self.custom_loader.replace('.', '/')};"
+                else:
+                    line_to_insert = (
+                        f'    const-string v0, "{self.lib_name}"\n'
+                        + "    invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V"
+                    )
                 code_block_to_append = f"""
                     .method static final constructor <clinit>()V
                         .locals 1
@@ -763,6 +759,9 @@ class DCC:
                         None,
                     )
                     if locals_index is not None:
+                        loc = re.compile("(    (?:\\.locals|\\.registers) )(\\d+)\n").search(content[index + locals_index])
+                        if loc.group(2) == "0":
+                            content[index + locals_index] = loc.group(1) + "1" + "\n"
                         content.insert(index + locals_index + 1, line_to_insert)
                     else:
                         Logger.error(
@@ -886,8 +885,8 @@ def get_min_sdk_from_dex(api):
             return "26"
         case _:
             return "28"
-                    
-                    
+
+
 def backup_jni_project_folder():
     Logger.info(" Backing up jni folder")
     src_path = path.join("project", "jni")
@@ -933,6 +932,12 @@ if __name__ == "__main__":
         "--custom-loader",
         default="nc.loader.Protect",
         help="Loader class, default: nc.loader.Protect",
+    )
+    parser.add_argument(
+        "-r",
+        "--force-custom-loader",
+        action="store_true",
+        help="Force use of custom loader",
     )
     parser.add_argument(
         "-s",
@@ -1000,4 +1005,3 @@ if __name__ == "__main__":
     finally:
         restore_jni_project_folder(backup_jni_folder_path)
         clean_tmp_directory()
-        
