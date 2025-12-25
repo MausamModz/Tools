@@ -52,6 +52,11 @@ com/example/test/MainActivity;onCreate\(Landroid/os/Bundle;\)V
 com/some/class;.*
 ```
 
+- Protect $ class or method '\' fix regex
+```
+com/some/class\$;.*
+```
+
 - Protect all methods in all classes under a package path.
 ```
 com/some/package/.*;.*
