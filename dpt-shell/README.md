@@ -4,8 +4,6 @@
 
 Forked from luoyesiqiu/[dpt-shell](https://github.com/luoyesiqiu/dpt-shell)
 
-English | [简体中文](./README.zh-CN.md) 
-
 dpt-shell is an Android Dex protection shell that hollows out Dex method implementations and reconstructs them at runtime.
 
 ## Usage
