@@ -4,6 +4,8 @@
 
 Forked from luoyesiqiu/[dpt-shell](https://github.com/luoyesiqiu/dpt-shell)
 
+English | [简体中文](./README.zh-CN.md) 
+
 dpt-shell is an Android Dex protection shell that hollows out Dex method implementations and reconstructs them at runtime.
 
 ## Usage
@@ -30,30 +32,34 @@ java -jar dpt.jar -f /path/to/android-package-file
 
 ```text
 usage: java -jar dpt.jar [option] -f <package_file>
- -c,--disable-acf          Disable app component factory(just use for
-                           debug).
- -d,--dump-code            Dump the code item of DEX and save it to .json
-                           files.
- -D,--debug                Make package debuggable.
- -e,--exclude-abi <arg>    Exclude specific ABIs (comma separated, e.g.
-                           x86,x86_64).
-                           Supported ABIs:
-                           - arm       (armeabi-v7a)
-                           - arm64     (arm64-v8a)
-                           - x86
-                           - x86_64
- -f,--package-file <arg>   Need to protect android package(*.apk, *.aab)
-                           file.
- -K,--keep-classes         Keeping some classes in the package can improve
-                           the app's startup speed to a certain extent,
-                           but it is not supported by some application
-                           packages.
- -l,--noisy-log            Open noisy log.
- -o,--output <arg>         Output directory for protected package.
- -r,--rules-file <arg>     Rules file for class names that will not be
-                           protected.
- -v,--version              Show program's version number.
- -x,--no-sign              Do not sign package.
+ -c,--protect-config <arg>   Protect config file.
+                             
+    --debug                  Make package debuggable.
+    --disable-acf            Disable app component factory(just use for
+                             debug).
+    --dump-code              Dump the code item of DEX and save it to
+                             .json files.
+ -e,--exclude-abi <arg>      Exclude specific ABIs (comma separated, e.g.
+                             x86,x86_64).
+                             Supported ABIs:
+                             - arm       (armeabi-v7a)
+                             - arm64     (arm64-v8a)
+                             - x86
+                             - x86_64
+ -f,--package-file <arg>     Need to protect android package(*.apk, *.aab)
+                             file.
+ -K,--keep-classes           Keeping some classes in the package can
+                             improve the app's startup speed to a certain
+                             extent, but it is not supported by some
+                             application packages.
+    --noisy-log              Open noisy log.
+ -o,--output <arg>           Output directory for protected package.
+ -r,--rules-file <arg>       Rules file for class names that will not be
+                             protected.
+ -S,--smaller                Trade some of the app's performance for a
+                             smaller app size.
+ -v,--version                Show program's version number.
+ -x,--no-sign                Do not sign package.
 ```
 
 ## Notice
