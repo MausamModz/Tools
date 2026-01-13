@@ -377,7 +377,7 @@ class Writer(object):
         vars = []
         for arg, atype in zip(args, ptype):
             if atype[0] == 'L' or atype[0] == '[':
-                vars.append('{.l = %s}' % (self.get_variable_or_const(arg)))
+                vars.append('{.l = (jobject) %s}' % (self.get_variable_or_const(arg)))
             elif atype[0] == 'Z':
                 vars.append('{.z = (jboolean) %s}' % (self.get_variable_or_const(arg)))
             elif atype[0] == 'B':
