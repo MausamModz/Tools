@@ -375,7 +375,7 @@ def get_bigger_type(type1, type2):
 
 def merge_array_type(type1, type2):
     assert is_array(type1) or is_array(type2)
-    if is_java_lang_object(type2):
+   #if is_java_lang_object(type2):
         return type2
     elif is_java_lang_object(type1):
         return type1
