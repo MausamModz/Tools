@@ -1,32 +1,3 @@
-/* --------------------------------- ABOUT -------------------------------------
-
-Original Author: Adam Yaxley
-Website: https://github.com/adamyaxley
-License: See end of file
-
-Obfuscate
-Guaranteed compile-time string literal obfuscation library for C++14
-
-Usage:
-Pass string literals into the AY_OBFUSCATE macro to obfuscate them at compile
-time. AY_OBFUSCATE returns a reference to an ay::obfuscated_data object with the
-following traits:
-	- Guaranteed obfuscation of string
-	The passed string is encrypted with a simple XOR cipher at compile-time to
-	prevent it being viewable in the binary image
-	- Global lifetime
-	The actual instantiation of the ay::obfuscated_data takes place inside a
-	lambda as a function level static
-	- Implicitly convertible to a char*
-	This means that you can pass it directly into functions that would normally
-	take a char* or a const char*
-
-Example:
-const char* obfuscated_string = AY_OBFUSCATE("Hello World");
-std::cout << obfuscated_string << std::endl;
-
------------------------------------------------------------------------------ */
-
 #pragma once
 #if __cplusplus >= 202002L
 	#define AY_CONSTEVAL consteval
@@ -243,29 +214,3 @@ namespace ay
 		thread_local auto obfuscated_data = ay::obfuscated_data<n, key, char_type>(obfuscator); \
 		return obfuscated_data; \
 	}()
-
-/* -------------------------------- LICENSE ------------------------------------
-
-Public Domain (http://www.unlicense.org)
-
-This is free and unencumbered software released into the public domain.
-
-Anyone is free to copy, modify, publish, use, compile, sell, or distribute this
-software, either in source code form or as a compiled binary, for any purpose,
-commercial or non-commercial, and by any means.
-
-In jurisdictions that recognize copyright laws, the author or authors of this
-software dedicate any and all copyright interest in the software to the public
-domain. We make this dedication for the benefit of the public at large and to
-the detriment of our heirs and successors. We intend this dedication to be an
-overt act of relinquishment in perpetuity of all present and future rights to
-this software under copyright law.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
------------------------------------------------------------------------------ */
