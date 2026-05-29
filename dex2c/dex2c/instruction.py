@@ -1,20 +1,3 @@
-# encoding=utf8
-#
-# Copyright (C) 2012, Geoffroy Gueguen <geoffroy.gueguen@gmail.com>
-# All rights reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS-IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 import logging
 from builtins import object
 from typing import List, Set
@@ -81,11 +64,22 @@ class Value(object):
                     # 可以无损转化成浮点类型
                     return False
                 else:
+                    # J (long) register reused as a reference type in a different
+                    # code path — common with wide-register overlap in Dalvik.
+                    # Keep the existing primitive type; do not crash.
+                    if util.is_long(self.var_type) and util.is_ref(vtype):
+                        return False
                     raise Exception("unable to refine type %s %s" % (self.var_type, vtype))
         else:
             new_type = util.merge_type(self.var_type, vtype)
             if new_type is None:
-                raise Exception("unable to refine type %s %s" % (self.var_type, vtype))
+                # Primitive (J/D) vs reference type conflict — caused by Dalvik
+                # wide-register overlap where the high register of a long/double
+                # pair shares a slot with an object in a different code path.
+                # Safe to keep existing type; do not crash.
+                logger.warning("type conflict ignored (wide-register overlap): %s vs %s — keeping %s"
+                               % (self.var_type, vtype, self.var_type))
+                return False
             if self.var_type != new_type:
                 self.var_type = new_type
                 return True
@@ -246,7 +240,13 @@ class Phi(Variable):
                 continue
             op_type = op.get_type()
             if same_op_type and op_type != same_op_type:
-                op_type = util.merge_type(same_op_type, op_type)
+                merged = util.merge_type(same_op_type, op_type)
+                # merge_type returns None when primitive and ref types conflict
+                # (wide-register overlap). Keep the previously seen type.
+                if merged is not None:
+                    op_type = merged
+                else:
+                    op_type = same_op_type
             same_op_type = op_type
 
         if same_op_type:

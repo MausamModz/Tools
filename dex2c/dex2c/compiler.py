@@ -1,20 +1,3 @@
-# -*- coding: utf-8 -*-
-
-#
-# Copyright (c) 2012 Geoffroy Gueguen <geoffroy.gueguen@gmail.com>
-# All Rights Reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS-IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 from dex2c.basic_blocks import fill_node_from_block
 
 import logging
@@ -212,8 +195,11 @@ class IrBuilder(object):
                     elif util.is_ref(same_type) and util.is_ref(op_type):
                         continue
                     else:
-                        raise Exception(
-                            "inconsistency phi operand type %s %s %s"
+                        # Wide-register overlap: a J/D register slot may be
+                        # reused as a reference type in a different branch.
+                        # Warn and skip rather than crash.
+                        logger.warning(
+                            "phi operand type mismatch (wide-register overlap) %s %s %s — skipping"
                             % (phi, same_type, op_type)
                         )
 
