@@ -67,7 +67,7 @@ or
 ```
 tar -xzf archive.tar.gz
 ```
-compress into tar.gz
+To compress into tar.gz
 ```
 tar -cf - your-folder | gzip -9 > archive.tar.gz
 ```
