@@ -63,7 +63,7 @@ pkg install unzip
 cd ~unzip android-ndk-aarch64.zip
 ```
 or
-Extract if you get `tar.gz` extension 
+- Extract if you get `tar.gz` extension 
 ```
 tar -xzf archive.tar.gz
 ```
