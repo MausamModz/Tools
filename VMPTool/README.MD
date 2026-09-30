@@ -62,6 +62,15 @@ pkg install unzip
 ```
 cd ~unzip android-ndk-aarch64.zip
 ```
+or
+Extract if you get `tar.gz` extension 
+```
+tar -xzf archive.tar.gz
+```
+compress into tar.gz
+```
+tar -cf - your-folder | gzip -9 > archive.tar.gz
+```
 
 - This will extract the contents of the zip file into a directory named android-ndk (or similar).
 
