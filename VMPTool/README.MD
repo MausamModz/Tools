@@ -115,10 +115,10 @@ If everything is set up correctly, you should see the version of the Android NDK
 
 
 ```
-chmod +x /data/data/com.termux/files/home/android-sdk/cmake/bin/cmake
-chmod -R 755 /data/data/com.termux/files/home/android-sdk/cmake/bin
-chmod +x /data/data/com.termux/files/home/android-sdk/ndk/29.0.14206865/build/cmake/android.toolchain.cmake
-chmod +x /data/data/com.termux/files/home/android-sdk/build-tools/37.0.0/aapt2
+chmod +x ~/android-sdk/cmake/bin/cmake
+chmod -R 755 ~/android-sdk/cmake/bin
+chmod +x ~/android-sdk/ndk/29.0.14206865/build/cmake/android.toolchain.cmake
+chmod +x ~/android-sdk/build-tools/37.0.0/aapt2
 chmod +x ~/android-sdk/ndk/29.0.14206865/prebuilt/linux-arm64/bin/make
 chmod -R +x ~/android-sdk/ndk/29.0.14206865/prebuilt/linux-arm64/bin/*
 ```
